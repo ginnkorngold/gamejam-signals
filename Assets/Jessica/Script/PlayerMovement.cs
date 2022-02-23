@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //TODO: Nuke this next line of code when observer pattern is correctly incorporated
+    public delegate void ObserverTest(int number);
+    public static event ObserverTest observerTest;
+
     public bool facingRight;
     
     public float speed;
@@ -35,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        //TODO: Nuke this next line of code when observer pattern is correctly incorporated
+        TestFunctionForObserver();
         Jump();
     }
 
@@ -73,6 +79,15 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             numberOfJumps = 1;
+        }
+    }
+
+    //TODO: Nuke this next line of code when observer pattern is correctly incorporated
+    public void TestFunctionForObserver()
+    {
+        if (numberOfJumps == 0)
+        {
+            observerTest?.Invoke(5);
         }
     }
 }
