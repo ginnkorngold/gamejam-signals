@@ -27,7 +27,7 @@ public class SignalBehaviour : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Lever"))
+        if (collision.gameObject.name == "Lever")
         {
             insideTrigger = false;
         }
