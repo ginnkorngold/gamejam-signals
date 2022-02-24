@@ -74,8 +74,7 @@ public class SignalBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Gravity"))
         {
             Debug.Log("Inside trigger");
-            gravity.RotateSprite();
-            gravity.rigidBody.gravityScale *= -1;
+            gravity.Switch();
         }
 
     }
