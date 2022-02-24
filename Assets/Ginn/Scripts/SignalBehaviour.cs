@@ -13,12 +13,18 @@ public class SignalBehaviour : MonoBehaviour
     public GameObject doorOneClosed;
 
     [Header("Level one")]
-    public GameObject platform;
-    public GameObject conveyer;
+    public GameObject platform01;
+    public GameObject conveyer01;
 
     [Header("Level two")]
     public GameObject platform02;
     private GravityController gravity;
+
+    [Header("Level three")]
+    public GameObject platform03;
+    public GameObject platform04;
+    public GameObject platform05;
+    public GameObject conveyer02;
 
 
     void Start()
@@ -85,17 +91,30 @@ public class SignalBehaviour : MonoBehaviour
             }
             if(collision.gameObject.name == "Lever02")
             {
-                platform.transform.position = new Vector2(platform.transform.position.x, -3f);
+                platform01.transform.position = new Vector2(platform01.transform.position.x, -3f);
             }
             if (collision.gameObject.name == "Lever03")
             {
-                conveyer.transform.position = new Vector2(-2.5f, conveyer.transform.position.y);
+                conveyer01.transform.position = new Vector2(-2.5f, conveyer01.transform.position.y);
             }
             if(collision.gameObject.name == "Lever04")
             {
                 platform02.transform.position = new Vector2(-7.5f, platform02.transform.position.y);
             }
-
+            if(collision.gameObject.name == "Lever05")
+            {
+                platform03.transform.position = new Vector2(-6.5f, platform03.transform.position.y);
+                platform04.transform.position = new Vector2(platform04.transform.position.x, 5f);
+                platform05.transform.position = new Vector2(platform05.transform.position.x, 4.5f);
+            }
+            if(collision.gameObject.name == "Lever06")
+            {
+                platform04.transform.position = new Vector2(platform04.transform.position.x, 8f);
+            }
+            if(collision.gameObject.name == "Lever07")
+            {
+                conveyer02.transform.position = new Vector2(-2f, conveyer02.transform.position.y);
+            }
 
         }
     }
@@ -105,13 +124,13 @@ public class SignalBehaviour : MonoBehaviour
         if (collision.gameObject.name == "MoveablePlatform")
         {
             gameObject.transform.position = new Vector2(gameObject.transform.position.x, 2f);
-            platform.transform.position = new Vector2(platform.transform.position.x, 2f);
+            platform01.transform.position = new Vector2(platform01.transform.position.x, 2f);
         }
 
         if(collision.gameObject.name == "Basket")
         {
             gameObject.transform.position = new Vector2(5.15f, gameObject.transform.position.y);
-            conveyer.transform.position = new Vector2(5.15f, gameObject.transform.position.y);
+            conveyer01.transform.position = new Vector2(5.15f, gameObject.transform.position.y);
         }
     }
 }
