@@ -1,41 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class SignalBehaviour : MonoBehaviour
 {
-    public GameObject signal;
     public ParticleSystem signalParticles;
     public bool insideTrigger;
     public bool signalActive;
-    private Vector3 scale;
-    private float speed = 2f;
 
-    // Start is called before the first frame update
+    [Header("Level Tutorial")]
+    public GameObject doorOneOpen;
+    public GameObject doorOneClosed;
+
+    //[Header("Level one")]
+
+
+
     void Start()
     {
-        scale = signal.transform.localScale;
         insideTrigger = false;
         signalActive = false;
-        signal.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             signalParticles.Play();
-            //StartCoroutine(signalling());
             if(insideTrigger == true)
             {
-                Debug.Log("behaviour happening");
+                signalActive = true;
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Lever")
+        if (collision.gameObject.CompareTag("Lever"))
         {
             insideTrigger = false;
         }
@@ -47,20 +48,21 @@ public class SignalBehaviour : MonoBehaviour
         {
             insideTrigger = true;
         }
+        if(collision.gameObject.CompareTag("Door"))
+        {
+            SceneManager.LoadScene(+1);
+        }
     }
 
-    private IEnumerator signalling()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        signalActive = true;
-        signal.SetActive(true);
-        scale.x += Time.deltaTime * speed;
-        scale.y += Time.deltaTime * speed;
-        signal.transform.localScale = scale;
-
-        yield return new WaitForSeconds(5f);
-        signal.SetActive(false);
-        scale.x = 1f;
-        scale.y = 1f;
-        signalActive = false;
+        if(signalActive == true)
+        {
+            if(collision.gameObject.name == "Lever/Trigger01")
+            {
+                doorOneClosed.SetActive(false);
+                doorOneOpen.SetActive(true);
+            }
+        }
     }
 }

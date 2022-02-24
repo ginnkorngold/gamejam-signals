@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/General/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Jessica/Scenes/TutorialScene.unity
+    guid: 279765bf13a7e7d429549e8649e1495f
+  - enabled: 1
+    path: Assets/Jessica/Scenes/Level1.unity
+    guid: 7d6152bd81954864fba405258ede4e51
+  - enabled: 1
+    path: Assets/Jessica/Scenes/Level2.unity
+    guid: 7a05963dab63f344c9fb5c6fec28b8ef
+  - enabled: 1
+    path: Assets/Jessica/Scenes/Level3.unity
+    guid: c66149ca64ee83444ae416ba8c2fa916
   m_configObjects: {}
