@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GravityController : MonoBehaviour
 {
-    private bool top;
+    public bool top;
 
-    private Rigidbody2D rigidBody;
+    public Rigidbody2D rigidBody;
     private PlayerMovement player;
 
     void Start()
@@ -17,19 +17,16 @@ public class GravityController : MonoBehaviour
 
     void Update()
     {
-        Switch();
+        //Switch();
     }
 
-    void Switch()
+    public void Switch()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            RotateSprite();
-            rigidBody.gravityScale *= -1;
-        }
+        RotateSprite();
+        rigidBody.gravityScale *= -1;
     }
 
-    void RotateSprite()
+    public void RotateSprite()
     {
         if (!top)
         {

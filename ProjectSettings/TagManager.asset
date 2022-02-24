@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Lever
   - Door
+  - Gravity
   layers:
   - Default
   - TransparentFX

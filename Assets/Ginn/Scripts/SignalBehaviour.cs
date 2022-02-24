@@ -13,16 +13,20 @@ public class SignalBehaviour : MonoBehaviour
     public GameObject doorOneClosed;
 
     [Header("Level one")]
-    public float speed;
     public GameObject platform;
     public GameObject conveyer;
 
+    [Header("Level two")]
+    public GameObject platform02;
+    private GravityController gravity;
 
 
     void Start()
     {
         insideTrigger = false;
         signalActive = false;
+
+        gravity = GetComponent<GravityController>();
     }
 
     void Update()
@@ -61,6 +65,13 @@ public class SignalBehaviour : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+        if (collision.gameObject.CompareTag("Gravity"))
+        {
+            Debug.Log("Inside trigger");
+            gravity.RotateSprite();
+            gravity.rigidBody.gravityScale *= -1;
+        }
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -80,6 +91,11 @@ public class SignalBehaviour : MonoBehaviour
             {
                 conveyer.transform.position = new Vector2(-2.5f, conveyer.transform.position.y);
             }
+            if(collision.gameObject.name == "Lever04")
+            {
+                platform02.transform.position = new Vector2(-7.5f, platform02.transform.position.y);
+            }
+
 
         }
     }
