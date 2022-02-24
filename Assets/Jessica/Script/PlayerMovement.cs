@@ -82,6 +82,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public Vector2 GetPlayerVelocity()
+    {
+        return rigidBody.velocity;
+    }
+
     //TODO: Nuke this next line of code when observer pattern is correctly incorporated
     public void TestFunctionForObserver()
     {
