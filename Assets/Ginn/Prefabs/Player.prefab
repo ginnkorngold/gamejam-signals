@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 48090746325778245}
   - component: {fileID: 48090746325778246}
   - component: {fileID: -6415541184536529144}
+  - component: {fileID: 7986028685726961839}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -60,8 +61,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48090746325778247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.189, y: -3.254, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -7.70148, y: -3.7084117, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 48090746154930988}
@@ -161,10 +162,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cabded4abd90b845ac2f61db4e34c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 0}
   signalParticles: {fileID: 9210418199550183718}
   insideTrigger: 0
   signalActive: 0
+  doorOneOpen: {fileID: 0}
+  doorOneClosed: {fileID: 0}
+--- !u!58 &7986028685726961839
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48090746325778247}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
 --- !u!1 &4166543830186021686
 GameObject:
   m_ObjectHideFlags: 0
