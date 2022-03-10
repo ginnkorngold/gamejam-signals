@@ -19,6 +19,7 @@ public class SignalBehaviour : MonoBehaviour
     [Header("Level two")]
     public GameObject platform02;
     private GravityController gravity;
+    public bool gravityEnabled = false;
 
     [Header("Level three")]
     public GameObject platform03;
@@ -26,11 +27,16 @@ public class SignalBehaviour : MonoBehaviour
     public GameObject platform05;
     public GameObject conveyer02;
 
+    public GameObject winText;
+    public GameObject winTextPanel;
+
 
     void Start()
     {
         insideTrigger = false;
         signalActive = false;
+        winText.SetActive(false);
+        winTextPanel.SetActive(false);
 
         gravity = GetComponent<GravityController>();
     }
@@ -58,6 +64,11 @@ public class SignalBehaviour : MonoBehaviour
             insideTrigger = false;
             signalActive = false;
         }
+
+        if(collision.gameObject.CompareTag("Gravity"))
+        {
+            gravityEnabled = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,12 +81,22 @@ public class SignalBehaviour : MonoBehaviour
         if(collision.gameObject.CompareTag("Door"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            if(SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                winText.SetActive(true);
+                winTextPanel.SetActive(true);
+                Time.timeScale = 0f;
+            }
         }
         if (collision.gameObject.CompareTag("Gravity"))
         {
             Debug.Log("Inside trigger");
-            gravity.RotateSprite();
-            gravity.rigidBody.gravityScale *= -1;
+            if(gravityEnabled == false)
+            {
+                gravityEnabled = true;
+                gravity.Switch();
+            }
         }
 
     }
@@ -113,6 +134,7 @@ public class SignalBehaviour : MonoBehaviour
             }
             if(collision.gameObject.name == "Lever07")
             {
+                Debug.Log("conveyer active");
                 conveyer02.transform.position = new Vector2(-2f, conveyer02.transform.position.y);
             }
 
