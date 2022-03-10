@@ -22,12 +22,15 @@ public class PlayerMovement : MonoBehaviour
     private float moveInput;
 
     private int numberOfJumps = 1;
+
+    private Vector3 startPosition;
     
     private Rigidbody2D rigidBody;
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        startPosition = transform.position;
     }
 
     private void FixedUpdate()
@@ -79,6 +82,14 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             numberOfJumps = 1;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "LoseArea")
+        {
+            transform.position = startPosition;
         }
     }
 
